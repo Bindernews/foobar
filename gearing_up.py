@@ -1,12 +1,13 @@
 import collections
 import math
+from fractions import Fraction
 
 DEBUG = True
 
 class Range:
     def __init__(self, mn, mx):
-        self.min = mn
-        self.max = mx
+        self.min = Fraction(mn)
+        self.max = Fraction(mx)
         
     def set(self, nmin, nmax):
         if nmin > nmax:
@@ -140,7 +141,7 @@ def solution1(pegs):
             if DEBUG:
                 print("Stack down %d - %s" % (len(states), str(st.rg)))
 
-def solution(pegs):
+def solution2(pegs):
     diffs = [0] + [(pegs[i] - pegs[i - 1]) for i in range(1, len(pegs))]
 
     def compute_radii(r0):
@@ -164,18 +165,21 @@ def solution(pegs):
     # the nth radius goes up at half the speed. "0.5x = mx + b" => "(0.5 - m)x = b" => "x = b / (0.5 - m)"
     # m simply determines if there are an even or odd number of gears  m = (r1.max - r1.min) / (r0.max - r0.min)
     if len(pegs) % 2 == 1:
-        m = 1
+        m = Fraction(1)
     else:
-        m = -1
+        m = Fraction(-1)
     b = r1.min - (m * r0.min)
-    x = b / (0.5 - m)
+    x = b / (Fraction(0.5) - m)
     #print("m = %f  b = %f  x = %f" % (m, b, x))
     # Finally we test to make sure there are no invalid radii
     for r in compute_radii(x):
         if r < 1:
             return (-1, -1)
-    return x.as_integer_ratio()
+    return (x.numerator, x.denominator)
     
+    
+def solution(pegs):
+    return solution2(pegs)
     
 def make_test(sln, peg0):
     pegs = [peg0]
