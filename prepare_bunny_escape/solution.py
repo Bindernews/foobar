@@ -1,6 +1,6 @@
 import collections
 
-def solution1(map, test_debug=False):
+def solution(map, test_debug=False):
     def dbgprint(*args, debug=True, **kwargs):
         if test_debug and debug:
             print(*args, **kwargs)
@@ -189,40 +189,3 @@ def solution1(map, test_debug=False):
     return best_distance    
     # end
     
-    
-def test(index, inp, expected, debug=False):
-    r = solution1(inp, debug)
-    if r == expected:
-        print("Test %d : OK" % index)
-    else:
-        print("Test %d : FAIL : %s" % (index, str(r)))
-
-test(1, [
-    [0, 0, 0, 0, 0, 0],
-    [1, 1, 1, 1, 1, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 1, 1, 1, 1, 1],
-    [0, 1, 1, 1, 1, 1],
-    [0, 0, 0, 0, 0, 0]
-    ], 11)
-test(2, [
-    [0, 1, 1, 0],
-    [0, 0, 0, 1],
-    [1, 1, 0, 0],
-    [1, 1, 1, 0]
-    ], 7)
-test(3, [
-    [0,1,1,1,1,0,0,0],
-    [0,0,0,0,0,1,1,0],
-    [1,1,1,1,0,1,1,0],
-    [1,1,1,1,0,1,1,0],
-    [0,0,0,0,0,1,1,0],
-    [0,1,1,1,1,1,1,0],
-    [0,1,1,1,1,1,1,0],
-    [0,0,0,0,0,0,0,0]
-    ], 17)
-test(4, [
-    [0,1,1],
-    [1,0,0],
-    [1,1,0]
-    ], 5)
