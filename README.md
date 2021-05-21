@@ -312,8 +312,17 @@ of reaching certain end states. This quickly lead to the idea of "markov chains"
 
 This website (https://brilliant.org/wiki/markov-chains) may help explain how markov chains work, and I'm a bit rusty with the math, but I'm pretty
 sure this is the way to go. I also found this site (https://flylib.com/books/en/2.71.1.298/1/) which talks about markov chains in the context
-of game programming, which might help later.
+of game programming, which might help later. After searching a little more, I found this post (https://math.stackexchange.com/questions/2337832/)
+which appears to have been asked by someone else doing the Google Foobar challenge (given that the input matrix the asker gave is the same as one
+of the sample cases). The answer is excellent because it gives a clear explanation on how to solve this type of mathematical problem.
 
 ### Attempt 1
+AAAAHHHH. This took me quite a while to solve, not because the problem was hard but because of the lack of visible test-cases.
+The big one that tripped me up was `[[0]] -> [1,1]`. It makes sense, but in my test cases I had the answer as `[0,1]`. AAAHHH.
+
+Anyways, the markov chain thing was one correct solution and I used the math StackExchange page to implement it, combined with
+this page https://en.wikipedia.org/wiki/Absorbing_Markov_chain (which is linked in the math StackExchange page). The biggest
+frustration with all of this was, as usual, the lack of clear test cases. It took me several days to figure out why I had ONE
+test case failing.
 
 
